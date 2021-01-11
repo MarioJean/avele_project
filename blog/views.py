@@ -1,7 +1,14 @@
 from django.shortcuts import render
+from .models import Blogpost
 
 def index(request):
-    return render(request, 'blog/blog.html')
+    blog = Blogpost.objects.all()
+    
+    context = {
+        'blog': blog
+    }
+    
+    return render(request, 'blog/blog.html', context)
     
 def blogpost(request):
     return render(request, 'blog/blogpost.html')
