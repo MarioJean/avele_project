@@ -32,48 +32,40 @@
         <div id="navbarcollapse" class="collapse navbar-collapse">
           <ul class="navbar-nav ml-auto">
 
-            <li 
-              {% if '/' == request.path %}
-                class="nav-item active mr-3 "
-              {% else %}
-                class="nav-item mr-3"
-              {% endif %}
-            >
-                <a href={% url 'index' %} class="nav-link">Home</a>
+            <li class="nav-item mr-3">
+              <a href={% url 'index' %} 
+                {% if '/' == request.path %}
+                  class="nav-link active"
+                {% else %}
+                  class="nav-link"
+                {% endif %}>Home</a>
             </li> 
-
-            <li 
-              {% if 'blog' in request.path %}
-                class="nav-item active mr-3 "
-              {% else %}
-                class="nav-item mr-3"
-              {% endif %}
-            >
-                <a href={% url 'blog' %} class="nav-link">Blog</a>
-            </li> 
-
-            <li 
-            {% if 'store' in request.path %}
-              class="nav-item active mr-3 "
-            {% else %}
-              class="nav-item mr-3"
-            {% endif %}
-            >
-                <a href={% url 'store' %} class="nav-link">Store</a>
+            <li class="nav-item mr-3">
+              <a href={% url 'blog' %} 
+                {% if 'blog' in request.path %}
+                  class="nav-link active"
+                {% else %}
+                  class="nav-link"
+                {% endif %}>Blog</a>
             </li>
-
-            <li 
-            {% if 'contact' in request.path %}
-              class="nav-item active mr-3 "
-            {% else %}
-              class="nav-item mr-3"
-            {% endif %}
-            >
-                <a href={% url 'contact' %} class="nav-link">Contact</a>
+            <li class="nav-item mr-3">
+              <a href={% url 'store' %} 
+                {% if 'store' in request.path %}
+                  class="nav-link active"
+                {% else %}
+                  class="nav-link"
+                {% endif %}>Shop</a>
             </li>
-
+            <li class="nav-item mr-3">
+              <a href={% url 'contact' %} 
+                {% if 'contact' in request.path %}
+                  class="nav-link active"
+                {% else %}
+                  class="nav-link"
+                {% endif %}>Contact</a>
+            </li>
           </ul>
-          <div class="navbar-text"><a href="#" class="search-btn"><i class="icon-search-1"></i></a></div>
+          <div class="navbar-text"><a href="{% url 'search' %}" class="search-btn"><i class="icon-search-1"></i></a></div>
         </div>
       </div>
     </nav>

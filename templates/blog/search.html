@@ -1,0 +1,45 @@
+{% extends 'base.html' %}
+
+{% load humanize %}
+
+{% block content %}
+
+<div class="container">
+    <div class="row">
+      <!-- Latest Posts -->
+      <main class="posts-listing col-lg-8"> 
+        <div class="container">
+          <div class="row">
+            {% if blog %}
+              {% for blogpost in blog %}
+
+                <!-- post -->
+                <div class="post col-xl-6">
+                  <div class="post-thumbnail"><a href="{% url 'blogpost' blogpost.id %}"><img src="{{ blogpost.photo_main.url }}" alt="..." class="img-fluid"></a></div>
+                  <div class="post-details">
+                    <div class="post-meta d-flex justify-content-between">
+                     <div class="category"><a href="#">{{ blogpost.category }}</a></div>
+                    </div><a href="{% url 'blogpost' blogpost.id %}">
+                      <h3 class="h4">{{ blogpost.title }}</h3></a>
+                    <p class="text-muted">{{blogpost.article|truncatewords:20}}</p>
+                    <footer class="post-footer d-flex align-items-center">
+                      <div class="date"><i class="icon-clock"></i> {{ blogpost.list_date | timesince }} Ago</div>
+                    </footer>
+                  </div>
+                </div>
+
+              {% endfor %}
+
+            {% else %}
+              <div class="col-md-12">
+                <p> No Posts Available </p>
+              </div>
+            {% endif %}
+          </div> 
+
+        </div>
+      </main>
+    </div>
+</div>
+
+{% endblock %}
