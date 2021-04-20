@@ -3,7 +3,42 @@
 {% load static %}
 
 {% block content %}
+<div class="add-comment">
+    <header>
+      <h3 class="h6">Leave a reply</h3>
+    </header>
+    <form action="{% url 'contact' %}" method="POST" class="commenting-form">
+        {% csrf_token %}
+      <div class="row">
+        <div class="form-group col-md-6">
+          <input type="text" name="name" id="name" placeholder="Name" class="form-control">
+        </div>
+        <div class="form-group col-md-6">
+          <input type="email" name="email" id="email" placeholder="Email Address (will not be published)" class="form-control">
+        </div>
+        <div class="form-group col-md-12">
+          <textarea name="inquiry" id="inquiry" placeholder="Type your comment" class="form-control"></textarea>
+        </div>
+        <div class="form-group col-md-12">
+          <button type="submit" class="btn btn-secondary">Submit</button>
+        </div>
+      </div>
+    </form>
+    <div class="add-comment">
+      <header>
+        <h3 class="h6">Contact Us</h3>
+      </header>
+      <form action="#" method="post" class="commenting-form">
+        {% csrf_token %}
+        <div class="row">
+          
+          {{ comment_form.as_p }}
 
-<h1>Contacts page</h1>
-
+          <div class="form-group col-md-12">
+            <button type="submit" class="btn btn-secondary">Submit Inquiry</button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
 {% endblock %}

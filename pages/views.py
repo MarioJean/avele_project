@@ -12,6 +12,3 @@ def index(request):
 
 def store(request):
     return render(request, 'pages/store.html')
-
-def contact(request):
-    return render(request, 'pages/contact.html')
