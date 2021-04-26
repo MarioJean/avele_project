@@ -1,24 +1,21 @@
-from django.shortcuts import render
-from django.http.response import HttpResponseRedirect
-from .forms import ContactForm
+from django.shortcuts import redirect, render
+from django.contrib import messages
+from .models import Contact
 
+# Create your views here.
 def contact(request):
-    user_contact = None
-    
-    # Comment posted
     if request.method == 'POST':
-        contact_form = ContactForm(request.POST)
-        if contact_form.is_valid():
+        contact=Contact()
+        name = request.POST['name']
+        email = request.POST['email']
+        inquiry = request.POST['inquiry']
 
-            # Save the comment to the database
-            user_contact.save()
-            return HttpResponseRedirect('contact')
-    else:
-        contact_form = ContactForm()
-
-    
-    context = {
-        'contact_form': contact_form
-    }
-    
-    return render(request, 'pages/contact.html', context)
+        
+        contact.name=name
+        contact.email=email
+        contact.inquiry=inquiry
+        
+        contact.save()
+        messages.success(request, 'Your inquiry has been submitted')
+    return render(request, 'pages/contact.html')
+     
