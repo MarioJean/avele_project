@@ -1,6 +1,7 @@
 from django.http.response import HttpResponseRedirect
 from django.shortcuts import render, get_object_or_404
 from django.core.paginator import EmptyPage, PageNotAnInteger, Paginator
+from django.contrib import messages
 from .models import Blogpost
 from .forms import NewCommentForm
 
@@ -35,7 +36,9 @@ def blogpost(request, blogpost_id):
             user_comment.post = blogpost
             # Save the comment to the database
             user_comment.save()
+            messages.success(request, 'Your comment has been submitted')
             return HttpResponseRedirect('blogpost' + str(blogpost.pk))
+            
     else:
         comment_form = NewCommentForm()
 
@@ -47,7 +50,7 @@ def blogpost(request, blogpost_id):
         'comments': comments,
         'comment_form': comment_form
     }
-    
+        
     return render(request, 'blog/blogpost.html', context)
 
 def search(request):
@@ -59,7 +62,7 @@ def search(request):
         if keywords:
             queryset_list = queryset_list.filter(description__icontains=keywords)
     
-    
+        
     context = {
         'blog': queryset_list,
     }

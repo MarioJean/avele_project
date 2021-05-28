@@ -11,7 +11,7 @@
   </div>
   <!-- Alerts -->
   {% include 'partials/_alerts.html' %}
-  <br>
+  <br/>
     <form action="{% url 'contact' %}" method="POST" class="commenting-form">
         {% csrf_token %}
       <div class="row">
@@ -19,7 +19,7 @@
           <input type="text" name="name" id="name" placeholder="Name" class="form-control">
         </div>
         <div class="form-group col-md-6">
-          <input type="email" name="email" id="email" placeholder="Email Address (We'll never share your email with anyone else)" class="form-control">
+          <input type="email" name="email" id="email" placeholder="Email Address (We'll never share your email)" class="form-control">
         </div>
         <div class="form-group col-md-12">
           <textarea name="inquiry" id="inquiry" placeholder="Type your inquiry" class="form-control"></textarea>
