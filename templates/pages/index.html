@@ -7,7 +7,7 @@
 {% block content %}
 
 <!-- Hero Section-->
-  <section style="background: url({% static 'img/bg1.jpg' %}); background-size: cover; background-position: center center" class="hero">
+  <section style="background: url({% static 'img/bg1.jpg' %}); background-size: cover; background-position: center" class="hero">
     <div class="container">
       <div>
         <div>
@@ -48,7 +48,7 @@
                     <div class="category"><a href="#">{{ blogpost.category }}</a></div>
                   </div><a href="{% url 'blogpost' blogpost.id %}">
                     <h3 class="h4">{{ blogpost.title }}</h3></a>
-                  <p class="text-muted">{{blogpost.article|truncatewords:20}} <a class="h6" href="{% url 'blogpost' blogpost.id %}">Read More</a></p>
+                  <p class="text-muted">{{blogpost.article|truncatewords:20|safe}} <a class="h6" href="{% url 'blogpost' blogpost.id %}">Read More</a></p>
                 </div>
               </div>
             
