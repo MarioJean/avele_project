@@ -12,6 +12,14 @@ Bootstrap Temple Blog Template
 * GENERAL
 * =====================
 */
+.merch {
+  transition: all 0.5s;
+}
+
+.merch:hover {
+  transform: scale(1.05);
+}
+
 .text-bold {
   font-weight: 700;
 }
@@ -627,7 +635,6 @@ div[class*="-btn"] {
 */
 section.hero {
   padding: 0;
-  color: #fff;
 }
 
 section.hero .container {
@@ -637,9 +644,16 @@ section.hero .container {
 
 section.hero h1 {
   line-height: 1.2em;
+  color: #fff;
+}
+
+section.hero h6 {
+  line-height: 1.2em;
+  color: #fff;
 }
 
 section.hero .continue {
+  color: #000;
   position: absolute;
   bottom: 30px;
   left: 20px;

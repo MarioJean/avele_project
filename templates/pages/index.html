@@ -7,14 +7,15 @@
 {% block content %}
 
 <!-- Hero Section-->
-  <section style="background: url({% static 'img/bg1.jpg' %}); background-size: cover; background-position: center" class="hero">
+  <section style="background: url({% static 'img/Hero.jpg' %}); background-size: cover; background-position: center center" class="hero">
     <div class="container">
       <div>
         <div>
           <h1 class='text-center'>Avele</h1>
           <h6 class='text-center'> Get it done today</h6>
+          <a href=".intro" class="continue link-scroll" ><i class="fa fa-long-arrow-down"></i> Scroll Down</a>
         </div>
-      </div><a href=".intro" class="continue link-scroll"><i class="fa fa-long-arrow-down"></i> Scroll Down</a>
+      </div>
     </div>
   </section>
   <!-- Intro Section-->
@@ -82,17 +83,17 @@
       <div class="card-deck">
         <div class="card">
           <a href="{% url 'store' %}">
-          <img class="card-img-top" src="{% static '/img/orange.jpg' %}" alt="Card image cap"> 
+          <img class="img-fluid merch" src="{% static '/img/Merch1.jpg' %}" alt="Avele Black Tee Men"> 
           </a>  
         </div>
         <div class="card">
           <a href="{% url 'store' %}">
-          <img class="card-img-top" src="{% static '/img/orange.jpg' %}" alt="Card image cap">
+          <img class="img-fluid merch" src="{% static '/img/Merch2.jpg' %}" alt="Avele White Tee Ladies">
           </a>
         </div>
         <div class="card">
           <a href="{% url 'store' %}">
-          <img class="card-img-top" src="{% static '/img/orange.jpg' %}" alt="Card image cap" >
+          <img class="img-fluid merch" src="{% static '/img/Merch4.jpg' %}" alt="Avele Tees Unisex" >
           </a>
         </div>
       </div>
