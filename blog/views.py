@@ -1,6 +1,6 @@
 from django.http.response import HttpResponseRedirect
 from django.shortcuts import render, get_object_or_404
-from django.core.paginator import EmptyPage, PageNotAnInteger, Paginator
+from django.core.paginator import Paginator
 from django.contrib import messages
 from .models import Blogpost
 from .forms import NewCommentForm
@@ -19,8 +19,8 @@ def index(request):
     
     return render(request, 'blog/blog.html', context)
     
-def blogpost(request, blogpost_id):
-    blogpost = get_object_or_404(Blogpost, pk=blogpost_id)
+def blogpost(request, pk, slug):
+    blogpost = get_object_or_404(Blogpost, pk=pk, slug=slug)
     blog2 = Blogpost.objects.order_by('-list_date').filter(is_published=True)[:3]
     comments = blogpost.comments.filter(status=True)
     user_comment = None

@@ -1,6 +1,8 @@
 from django.db import models
 from datetime import datetime
 from ckeditor.fields import RichTextField
+from django.utils.text import slugify
+from django.urls import reverse
 
 class Blogpost(models.Model):
     title = models.CharField(max_length=200)
@@ -12,7 +14,20 @@ class Blogpost(models.Model):
     read_time = models.CharField(max_length=10, default="5 min")
     is_published = models.BooleanField(default=True)
     list_date = models.DateField(default=datetime.now, blank=True)
+    slug = models.SlugField(default='', max_length=200, null = False)
     
+    def get_absolute_url(self):
+        kwargs = {
+            'pk': self.id,
+            'slug': self.slug          
+        }
+        return reverse('blogpost', kwargs=kwargs)
+    
+    def save(self, *args, **kwargs):
+        value = self.title
+        self.slug = slugify(value, allow_unicode=True)
+        super().save(*args, **kwargs)
+
     def __str__(self):
         return self.title
     

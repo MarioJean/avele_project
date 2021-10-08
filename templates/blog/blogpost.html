@@ -105,7 +105,7 @@
           </header>
           {% if blog2 %}
             {% for blogpost in blog2 %}
-              <div class="blog-posts"><a href="{% url 'blogpost' blogpost.id %}">
+              <div class="blog-posts"><a href="{% url 'blogpost' blogpost.slug blogpost.pk%}">
                   <div class="item d-flex align-items-center">
                     <div class="image"><img src="{{ blogpost.photo_main.url }}" alt="..." class="img-fluid"></div>
                     <div class="title"><strong>{{ blogpost.title }}</strong>
