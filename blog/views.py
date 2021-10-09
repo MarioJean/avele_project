@@ -37,7 +37,7 @@ def blogpost(request, pk, slug):
             # Save the comment to the database
             user_comment.save()
             messages.success(request, 'Your comment has been submitted')
-            return HttpResponseRedirect('blogpost' + str(blogpost.pk))
+            return HttpResponseRedirect(request.path_info)
             
     else:
         comment_form = NewCommentForm()
